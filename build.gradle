@@ -1,0 +1,38 @@
+/* The subprojects group of tasks will use this script when building .
+*  This info will be associated to the release artifacts.
+*  The artifacts produced are going to be released under /subproject/build
+*/
+subprojects {
+    task buildInfo {
+        def revisionCommand = "git rev-parse --short HEAD"
+        def revisionResult = revisionCommand.execute()
+        project.ext.revision = revisionResult.text.trim()
+
+        def branchCommand = "git rev-parse --abbrev-ref HEAD"
+        def branchResult = branchCommand.execute()
+        project.ext.branch = branchResult.text.trim()
+
+        def hostnameCommand = "hostname"
+        def hostnameResult = hostnameCommand.execute()
+        project.ext.hostname = hostnameResult.text.trim()
+
+        project.ext.builtAt = (int) (new Date().getTime() / 1000)
+
+        if (project.hasProperty('releaseVersion')) {
+            project.version = project.releaseVersion
+        } else {
+            project.version = '1.0' + project.ext.branch
+        }
+    }
+}
+/* This delegates the responsability of evaluating a task to the children .
+*  A task executed in the root project will be resolved by the children if they define that task.
+*  e.g.
+*  prepareDeploy is defined by both the children
+*  Calling prepareDeploy from the root project will call prepareDeploy on each sub project.
+*/
+evaluationDependsOnChildren();
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.10'
+}

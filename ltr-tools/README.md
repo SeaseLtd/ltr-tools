@@ -1,9 +1,6 @@
 # Learning To Rank Tools Project
 
 ## Description
-This project is containing both the ltr-tools cli and the solr configuration to provide backend search functionalities.
-The main scope of this project will be to provide usable tools to help with Learning To Rank integrations and developments.
-
 The ltr-tools is a command line interface to run a set of utility tasks to visualize, debug and understand better Learning To Rank models and training sets.
 The ltr-tools project is meant to work with a Solr backend, related configuration are in the configuration project ( and they are used in the tests).
 
@@ -16,6 +13,7 @@ This allow to visualize the most occurring features and thresholds in the branch
 Can be really useful to :
 - find anomalies in the model and in the training set( e.g. thresholds that don't make sense)
 - find important features and thresholds
+
 
 2) Training Set Indexer
 This tool allow to index the training set.

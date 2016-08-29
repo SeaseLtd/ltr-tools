@@ -1,0 +1,17 @@
+apply plugin: 'distribution'
+
+/* Distribution plugin configuration.
+*  It allows you to compress and distribute content from a specific directory*/
+distributions {
+    main {
+        contents {
+            from { 'solr' }
+        }
+    }
+}
+
+/* In the configuration case , the prepare Deploy will simply execute the distZip first */
+task prepareDeploy() {
+}
+
+prepareDeploy.dependsOn distZip
