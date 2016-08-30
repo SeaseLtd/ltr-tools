@@ -53,11 +53,11 @@ gradle test
 
 3) **Model Indexer**
 
-   java -jar ltr-tools-1.0.jar -tool modelIndexer -model /models/lambdaMARTModel1.json  
+   java -jar ltr-tools-1.0.jar -tool modelIndexer -model /models/lambdaMARTModel1.json -solrURL http://localhost:8983/solr/models
 
 4) **Training set Indexer**
 
-   java -jar ltr-tools-1.0.jar -tool trainingSetIndexer -trainingSet /trainingSets/training1.txt -features /featureMappings/feature-mapping1.json -categoricalFeatures /feature/categoricalFeatures1.txt
+   java -jar ltr-tools-1.0.jar -tool trainingSetIndexer -trainingSet /trainingSets/training1.txt -features /featureMappings/feature-mapping1.json -categoricalFeatures /feature/categoricalFeatures1.txt -solrURL http://localhost:8983/solr/trainingSet
    
 5) **Top Scoring Leaves Viewer**
 
