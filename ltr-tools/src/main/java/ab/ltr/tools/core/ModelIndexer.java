@@ -65,7 +65,7 @@ public class ModelIndexer {
             treeCounter++;
         }
         solr.commit();
-        LOGGER.info(String.format("Model indexing complete",treeCounter,treeEnsembleSize));
+        LOGGER.info("Model indexing complete");
     }
 
     private void visit(SolrClient solr, String modelName, JsonNode node) throws IOException, SolrServerException {

@@ -5,7 +5,7 @@
     <field name="_root_" type="string" indexed="true" stored="false"/>
 
     <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false"/>
-
+    <field name="relevancy" type="tdouble" indexed="true" stored="true" docValues="true"/>
     <dynamicField name="cat_*" type="string" indexed="true" stored="true" docValues="true"/>
     <dynamicField name="*" type="tdouble" indexed="true" stored="true" docValues="true"/>
 
