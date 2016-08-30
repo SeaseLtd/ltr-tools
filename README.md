@@ -21,7 +21,7 @@ Can be really useful to :
 2) Training Set Indexer
 
 This tool allow to index the training set.
-Each document is the a training sample with its feature vector.
+Each document is a training sample with its feature vector.
 It is really useful to explore and possibly visualize the training set.
 It could be important also to validate specific leaf paths from the model
 
@@ -39,3 +39,24 @@ gradle test
 
 ## Reports
 /ltr-tools/build/reports/test/index.html
+
+## Usage 
+1) First of all you need your Solr running, install a Solr version ( 6.0 would be fine but it is not a requirement)
+   and copy the configuration from the configuration project.
+   This will create 2 collections : models and trainingSet.
+   **models** will be used to index the LambdaMART models .
+   **trainingSet** will be used to index your training set.
+
+2) Help
+   java -jar ltr-tools-1.0.jar -help
+
+3) Model Indexer
+   java -jar ltr-tools-1.0.jar -tool modelIndexer -model /models/lambdaMARTModel1.json  
+
+4) Training set Indexer
+   java -jar ltr-tools-1.0.jar -tool trainingSetIndexer -trainingSet /trainingSets/training1.txt -features /featureMappings/feature-mapping1.json -categoricalFeatures /feature/categoricalFeatures1.txt
+   
+5) Top Scoring Leaves Viewer
+   java -jar ltr-tools-1.0.jar -tool topScoringLeavesViewer -model /models/lambdaMARTModel1.json -topK 10  
+
+More details are available here : http://alexbenedetti.blogspot.co.uk/2016/08/solr-is-learning-to-rank-better-part-3.html
