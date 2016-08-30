@@ -1,2 +1,2 @@
-- se tool null, dare spiegazione
-- migliorare velocita' indicizzazione solr
+- Solr indexing performance must be improved, currently it is the simpelst as possible.
+  We should index bulk of docs, manage auto-commits ect

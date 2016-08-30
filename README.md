@@ -10,6 +10,7 @@ The ltr-tools project is meant to work with a Solr backend, related configuratio
 Tools available so far :
 
 1) Model Indexer
+
 This tool allow to index the splitting point of your lambdaMART model.
 Each splitting branch point is indexed.
 This allow to visualize the most occurring features and thresholds in the branches.
@@ -18,12 +19,14 @@ Can be really useful to :
 - find important features and thresholds
 
 2) Training Set Indexer
+
 This tool allow to index the training set.
 Each document is the a training sample with its feature vector.
 It is really useful to explore and possibly visualize the training set.
 It could be important also to validate specific leaf paths from the model
 
 3) Top Scoring Leaves Viewer
+
 This tool visits the lambdaMART model and prints the top scoring leaves.
 It is really useful to find out the most promising paths in the trees of the ensemble.
 Can be used to discuss with the business people if the most promising paths make sense in the domain .
