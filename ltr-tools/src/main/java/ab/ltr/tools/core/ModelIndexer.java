@@ -3,6 +3,8 @@ package ab.ltr.tools.core;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.TextNode;
+
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
@@ -59,17 +61,17 @@ public class ModelIndexer {
             JsonNode singleTree = null;
             while (elements.hasNext()) {
                 singleTree = elements.next();
+                visit(solr, modelName, singleTree);
+                LOGGER.debug(String.format("Trees %s/%s indexed",treeCounter,treeEnsembleSize));
+                treeCounter++;
             }
-            visit(solr, modelName, singleTree);
-            LOGGER.debug(String.format("Trees %s/%s indexed",treeCounter,treeEnsembleSize));
-            treeCounter++;
         }
         solr.commit();
         LOGGER.info("Model indexing complete");
     }
 
     private void visit(SolrClient solr, String modelName, JsonNode node) throws IOException, SolrServerException {
-        if (node != null && !node.has(VALUE)) {
+        if (node != null && !node.has(VALUE) && !(node instanceof TextNode)) {
             String feature = node.get(FEATURE_SPLIT).asText();
             double threshold = Double.parseDouble(node.get(THRESHOLD_SPLIT).asText());
 
