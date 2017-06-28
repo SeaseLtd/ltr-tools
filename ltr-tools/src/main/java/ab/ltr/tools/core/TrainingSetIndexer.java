@@ -93,7 +93,7 @@ public class TrainingSetIndexer {
 
     private void indexTrainingSample(SolrClient solr, Map<String, String> featureId2featureNameMap,List<String> categoricalFeatureNames, String line) {
         try {
-            final String[] vectorComponents = line.split("\\s");
+            final String[] vectorComponents = line.replaceAll("\\s+#.*$", "").split("\\s");
 
             SolrInputDocument doc = new SolrInputDocument();
             doc.addField(RELEVANCY, vectorComponents[0]);
