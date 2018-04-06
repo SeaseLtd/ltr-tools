@@ -63,4 +63,4 @@ gradle test
 
    java -jar ltr-tools-1.0.jar -tool topScoringLeavesViewer -model /models/lambdaMARTModel1.json -topK 10  
 
-More details are available here : http://alexbenedetti.blogspot.co.uk/2016/08/solr-is-learning-to-rank-better-part-3.html
+More details are available here : https://sease.io/2016/08/solr-is-learning-to-rank-better-part-3-ltr-tools.html
