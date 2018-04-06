@@ -1,8 +1,8 @@
-package ab.ltr.tools;
+package io.sease.ltr.tools;
 
-import ab.ltr.tools.core.ModelIndexer;
-import ab.ltr.tools.core.TopScoringLeavesViewer;
-import ab.ltr.tools.core.TrainingSetIndexer;
+import io.sease.ltr.tools.core.ModelIndexer;
+import io.sease.ltr.tools.core.TopScoringLeavesViewer;
+import io.sease.ltr.tools.core.TrainingSetIndexer;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;

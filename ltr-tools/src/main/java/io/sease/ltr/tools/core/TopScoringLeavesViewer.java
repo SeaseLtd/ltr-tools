@@ -1,8 +1,9 @@
-package ab.ltr.tools.core;
+package io.sease.ltr.tools.core;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import io.sease.ltr.tools.config.JsonModelFields;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,15 +13,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.NavigableSet;
 import java.util.TreeMap;
-
-import static ab.ltr.tools.config.JsonModelFields.FEATURE_SPLIT;
-import static ab.ltr.tools.config.JsonModelFields.LEFT;
-import static ab.ltr.tools.config.JsonModelFields.PARAMS;
-import static ab.ltr.tools.config.JsonModelFields.RIGHT;
-import static ab.ltr.tools.config.JsonModelFields.THRESHOLD_SPLIT;
-import static ab.ltr.tools.config.JsonModelFields.TREES;
-import static ab.ltr.tools.config.JsonModelFields.VALUE;
-import static ab.ltr.tools.config.JsonModelFields.WEIGHT;
 
 /**
  * @author Alessandro
@@ -45,11 +37,11 @@ public class TopScoringLeavesViewer {
         StringBuilder result=new StringBuilder();
 
         JsonNode model = jacksonObjectMapper.readTree(jsonModel);
-        ArrayNode trees = (ArrayNode) model.get(PARAMS).get(TREES);
+        ArrayNode trees = (ArrayNode) model.get(JsonModelFields.PARAMS).get(JsonModelFields.TREES);
         int treeCounter=1;
         int treeEnsembleSize=trees.size();
         for (JsonNode tree : trees) {
-            Double treeWeight=Double.parseDouble(tree.get(WEIGHT).asText());
+            Double treeWeight=Double.parseDouble(tree.get(JsonModelFields.WEIGHT).asText());
             Iterator<JsonNode> elements = tree.elements();
             JsonNode rootNode = null;
             while (elements.hasNext()) {
@@ -73,14 +65,14 @@ public class TopScoringLeavesViewer {
     }
 
     private void populateScore2Paths(TreeMap<Double, String> score2path, Double treeWeight, JsonNode node, StringBuilder path) throws IOException, SolrServerException {
-        if (node != null && !node.has(VALUE)) {
-            String feature = node.get(FEATURE_SPLIT).asText();
-            String threshold = node.get(THRESHOLD_SPLIT).asText();
+        if (node != null && !node.has(JsonModelFields.VALUE)) {
+            String feature = node.get(JsonModelFields.FEATURE_SPLIT).asText();
+            String threshold = node.get(JsonModelFields.THRESHOLD_SPLIT).asText();
 
-            populateScore2Paths(score2path, treeWeight, node.get(LEFT), new StringBuilder(path.toString()).append(feature + " <= " + threshold + ", "));
-            populateScore2Paths(score2path, treeWeight, node.get(RIGHT), new StringBuilder(path.toString()).append(feature + " > " + threshold + ", "));
+            populateScore2Paths(score2path, treeWeight, node.get(JsonModelFields.LEFT), new StringBuilder(path.toString()).append(feature + " <= " + threshold + ", "));
+            populateScore2Paths(score2path, treeWeight, node.get(JsonModelFields.RIGHT), new StringBuilder(path.toString()).append(feature + " > " + threshold + ", "));
         } else if (node != null) {
-            double leafScore = Double.parseDouble(node.get(VALUE).asText());
+            double leafScore = Double.parseDouble(node.get(JsonModelFields.VALUE).asText());
             if(treeWeight!=null){
                 leafScore*=treeWeight;
             }

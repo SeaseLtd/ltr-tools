@@ -1,4 +1,4 @@
-package ab.ltr.tools.config;
+package io.sease.ltr.tools.config;
 
 /**
  * @author Alessandro

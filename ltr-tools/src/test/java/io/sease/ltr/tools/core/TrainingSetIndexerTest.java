@@ -1,7 +1,7 @@
-package ab.ltr.tools.core;
+package io.sease.ltr.tools.core;
 
-import ab.ltr.tools.SolrBaseTest;
-import ab.ltr.tools.config.SolrFields;
+import io.sease.ltr.tools.SolrBaseTest;
+import io.sease.ltr.tools.config.SolrFields;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;

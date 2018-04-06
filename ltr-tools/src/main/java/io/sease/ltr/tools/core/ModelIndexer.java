@@ -1,4 +1,4 @@
-package ab.ltr.tools.core;
+package io.sease.ltr.tools.core;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,17 +14,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
-import static ab.ltr.tools.config.JsonModelFields.FEATURE_SPLIT;
-import static ab.ltr.tools.config.JsonModelFields.LEFT;
-import static ab.ltr.tools.config.JsonModelFields.RIGHT;
-import static ab.ltr.tools.config.JsonModelFields.PARAMS;
-import static ab.ltr.tools.config.JsonModelFields.NAME;
-import static ab.ltr.tools.config.JsonModelFields.THRESHOLD_SPLIT;
-import static ab.ltr.tools.config.JsonModelFields.TREES;
-import static ab.ltr.tools.config.JsonModelFields.VALUE;
-import static ab.ltr.tools.config.SolrFields.Models.FEATURE;
-import static ab.ltr.tools.config.SolrFields.Models.MODEL_NAME;
-import static ab.ltr.tools.config.SolrFields.Models.THRESHOLD;
+import static io.sease.ltr.tools.config.JsonModelFields.FEATURE_SPLIT;
+import static io.sease.ltr.tools.config.JsonModelFields.LEFT;
+import static io.sease.ltr.tools.config.JsonModelFields.RIGHT;
+import static io.sease.ltr.tools.config.JsonModelFields.PARAMS;
+import static io.sease.ltr.tools.config.JsonModelFields.NAME;
+import static io.sease.ltr.tools.config.JsonModelFields.THRESHOLD_SPLIT;
+import static io.sease.ltr.tools.config.JsonModelFields.TREES;
+import static io.sease.ltr.tools.config.JsonModelFields.VALUE;
+import static io.sease.ltr.tools.config.SolrFields.Models.FEATURE;
+import static io.sease.ltr.tools.config.SolrFields.Models.MODEL_NAME;
+import static io.sease.ltr.tools.config.SolrFields.Models.THRESHOLD;
 
 /**
  * @author Alessandro

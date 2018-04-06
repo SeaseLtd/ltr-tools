@@ -1,7 +1,6 @@
-package ab.ltr.tools.core;
+package io.sease.ltr.tools.core;
 
 import org.apache.solr.client.solrj.SolrServerException;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;

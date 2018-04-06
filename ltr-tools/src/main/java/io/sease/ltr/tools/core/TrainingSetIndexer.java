@@ -1,4 +1,4 @@
-package ab.ltr.tools.core;
+package io.sease.ltr.tools.core;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -24,7 +23,7 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static ab.ltr.tools.config.SolrFields.TrainingSet.RELEVANCY;
+import static io.sease.ltr.tools.config.SolrFields.TrainingSet.RELEVANCY;
 
 /**
  * @author Alessandro

@@ -1,8 +1,8 @@
-package ab.ltr.tools;
+package io.sease.ltr.tools;
 
-import ab.ltr.tools.core.ModelIndexer;
-import ab.ltr.tools.core.TopScoringLeavesViewer;
-import ab.ltr.tools.core.TrainingSetIndexer;
+import io.sease.ltr.tools.core.ModelIndexer;
+import io.sease.ltr.tools.core.TopScoringLeavesViewer;
+import io.sease.ltr.tools.core.TrainingSetIndexer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

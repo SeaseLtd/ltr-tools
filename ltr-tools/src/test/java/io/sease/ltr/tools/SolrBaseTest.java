@@ -1,4 +1,4 @@
-package ab.ltr.tools;
+package io.sease.ltr.tools;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
