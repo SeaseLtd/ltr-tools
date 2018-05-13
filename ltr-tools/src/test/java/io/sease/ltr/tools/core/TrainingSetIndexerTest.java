@@ -16,32 +16,27 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.powermock.reflect.Whitebox.setInternalState;
 
-
 /**
- * @author Alessandro
- * @date 28/08/2016
+ * @author abenedetti
  */
 public class TrainingSetIndexerTest extends SolrBaseTest{
 
-    public static final String SAMPLE_TRAINING_SET = "trainingSet";
+    private static final String SAMPLE_TRAINING_SET = "trainingSet";
 
     private TrainingSetIndexer trainingSetIndexerToTest;
+    private String sampleModelsDirPath;
 
     @Before
     public void setUp(){
         super.initSolrNode(SAMPLE_TRAINING_SET);
         trainingSetIndexerToTest=new TrainingSetIndexer();
         setInternalState(trainingSetIndexerToTest,"solr",embeddedSolrServer);
-    }
 
-    private String getResourcePath() {
-        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-        return classLoader.getResource(SAMPLE_TRAINING_SET).getPath();
+        sampleModelsDirPath = getResourcePath(SAMPLE_TRAINING_SET);
     }
 
     @Test
     public void indexTrainingSet_trainingSetWithCategoricalFeature_shouldIndexCategoriesValues() throws IOException, SolrServerException {
-        String sampleModelsDirPath = getResourcePath();
         String trainingSet="trainingSet1";
         String trainingSetHeader="trainingSet-header.json";
         String trainingSetCategoricalList="trainingSet-categorical";
@@ -85,7 +80,6 @@ public class TrainingSetIndexerTest extends SolrBaseTest{
 
     @Test
     public void indexTrainingSet_trainingSetWithNoCategoricalFeature_shouldIndexPlainFeatures() throws IOException, SolrServerException {
-        String sampleModelsDirPath = getResourcePath();
         String trainingSet="trainingSet1";
         String trainingSetHeader="trainingSet-header.json";
 
@@ -127,7 +121,6 @@ public class TrainingSetIndexerTest extends SolrBaseTest{
 
     @Test
     public void indexTrainingSet_noFeatureMappingSpecified_shouldIndexPlainFeaturesNames() throws IOException, SolrServerException {
-        String sampleModelsDirPath = getResourcePath();
         String trainingSet="trainingSet1";
 
         trainingSetIndexerToTest.indexTrainingSet(sampleModelsDirPath+"/"+trainingSet,null,null);
@@ -168,7 +161,6 @@ public class TrainingSetIndexerTest extends SolrBaseTest{
 
     @Test(expected = IOException.class)
     public void indexTrainingSet_trainingSetNotFound_shouldThrowException() throws IOException, SolrServerException {
-        String sampleModelsDirPath = getResourcePath();
         String trainingSet="notFound";
         String trainingSetHeader="trainingSet-header.json";
         String trainingSetCategoricalList="trainingSet-categorical";
@@ -178,7 +170,6 @@ public class TrainingSetIndexerTest extends SolrBaseTest{
 
     @Test(expected = IOException.class)
     public void indexTrainingSet_mappingNotFound_shouldThrowException() throws IOException, SolrServerException {
-        String sampleModelsDirPath = getResourcePath();
         String trainingSet="trainingSet1";
         String trainingSetHeader="notFound.json";
         String trainingSetCategoricalList="trainingSet-categorical";
@@ -188,7 +179,7 @@ public class TrainingSetIndexerTest extends SolrBaseTest{
 
     @Test(expected = IOException.class)
     public void indexTrainingSet_categoricalFeaturesNotFound_shouldThrowException() throws IOException, SolrServerException {
-        String sampleModelsDirPath = getResourcePath();
+        String sampleModelsDirPath = getResourcePath(SAMPLE_TRAINING_SET);
         String trainingSet="trainingSet1";
         String trainingSetHeader="trainingSet-header.json";
         String trainingSetCategoricalList="notFound";

@@ -15,8 +15,7 @@ import java.util.NavigableSet;
 import java.util.TreeMap;
 
 /**
- * @author Alessandro
- * @date 28/08/2016
+ * @author abenedetti
  */
 public class TopScoringLeavesViewer {
     private static final Logger LOGGER = LoggerFactory.getLogger(TopScoringLeavesViewer.class);

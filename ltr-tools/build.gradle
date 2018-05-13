@@ -3,39 +3,28 @@ apply plugin: 'maven'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
-/* Java plugin properties*/
-group = 'ab.ltr.tools'
+group = 'io.sease.ltr.tools'
+version = project.version
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-/* Repositories to fetch external dependencies*/
 repositories {
     mavenCentral()
     maven { url "http://maven.restlet.com" }
 }
 
-/* Declares the build script classpath specifying extra properties, repositories and dependencies required by the build script .
-*  In this example test-set plugin, sonarqube ect are required dependencies for build related task to happen
-* */
 buildscript {
     ext {
-        solr_version = '6.2.0'
-    }
-    repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-        mavenCentral()
-        jcenter()
+        solr_version = project.version
     }
 }
 
-/* Base name for the jar produced */
 jar {
     baseName = 'ltr-tools'
     manifest {
-        attributes 'Implementation-Title': 'Ltr Tools',
-                   'Main-Class': 'ab.ltr.tools.CliLtrTools'
+        attributes 'Implementation-Title': 'LTR Tools',
+                   'Main-Class': 'io.sease.ltr.tools.CliLtrTools'
     }
     doFirst {
         from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
@@ -63,12 +52,6 @@ dependencies {
     testCompile('org.unitils:unitils-core:3.4.2')
 }
 
-/* Eclipse plugin configuration
-* Specifically this configuration solves a known bug where the eclipse metadata
-* generated correctly configures compiler source and target levels but it
-* still attaches a JRE container that uses the workspace default JRE rather
-* than a container of the appropriate level.
-* */
 eclipse {
     classpath {
         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
@@ -76,16 +59,13 @@ eclipse {
     }
 }
 
-/* Project properties will be expanded, allowing per environment variable resolution */
 processResources {
     expand(project.properties)
 }
 
-/* Task to copy the Solr configuration from the :configuration project to the integration tests resources
-*  Integration tests are going to run with those configurations */
 task installSolrConfiguration(type: Copy) {
     from project(":configuration").file('solr')
-    into 'src/test/resources/solr'
+    into "build/solr"
 }
 
 /* Task to generate user friendly reports for the tests . They are going to be available under :

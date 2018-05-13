@@ -27,8 +27,7 @@ import static io.sease.ltr.tools.config.SolrFields.Models.MODEL_NAME;
 import static io.sease.ltr.tools.config.SolrFields.Models.THRESHOLD;
 
 /**
- * @author Alessandro
- * @date 28/08/2016
+ * @author abenedetti
  */
 public class ModelIndexer {
     private static final Logger LOGGER = LoggerFactory.getLogger(ModelIndexer.class);

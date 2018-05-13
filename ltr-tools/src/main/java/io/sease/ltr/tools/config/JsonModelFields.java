@@ -1,8 +1,7 @@
 package io.sease.ltr.tools.config;
 
 /**
- * @author Alessandro
- * @date 28/08/2016
+ * @author abenedetti
  */
 public class JsonModelFields {
     public static final String NAME = "name";
