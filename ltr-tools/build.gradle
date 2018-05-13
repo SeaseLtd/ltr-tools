@@ -42,8 +42,8 @@ dependencies {
     compile 'commons-lang:commons-lang:2.6'
 
     compile("org.apache.solr:solr-solrj:${solr_version}")
-    compile("org.apache.solr:solr-core:${solr_version}")
 
+    testCompile("org.apache.solr:solr-core:${solr_version}")
     testCompile("org.apache.solr:solr-test-framework:${solr_version}")
 
     testCompile('org.powermock:powermock-module-junit4:1.6.3')
