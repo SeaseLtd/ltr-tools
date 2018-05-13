@@ -16,32 +16,26 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.powermock.reflect.Whitebox.setInternalState;
 
-
 /**
- * @author Alessandro
- * @date 28/08/2016
+ * @author abenedetti
  */
 public class ModelIndexerTest extends SolrBaseTest{
 
-    public static final String SAMPLE_MODELS = "models";
+    private static final String SAMPLE_MODELS = "models";
 
     private ModelIndexer modelIndexerToTest;
+    private String sampleModelsDirPath;
 
     @Before
     public void setUp(){
         super.initSolrNode(SAMPLE_MODELS);
         modelIndexerToTest=new ModelIndexer();
         setInternalState(modelIndexerToTest,"solr",embeddedSolrServer);
-    }
-
-    private String getResourcePath() {
-        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-        return classLoader.getResource(SAMPLE_MODELS).getPath();
+        sampleModelsDirPath = getResourcePath(SAMPLE_MODELS);
     }
 
     @Test
     public void indexModel_sampleModel_shouldIndexAllModelSplits() throws IOException, SolrServerException {
-        String sampleModelsDirPath = getResourcePath();
         String modelJson = "lambdaMARTModel1.json";
 
         modelIndexerToTest.indexModel(sampleModelsDirPath + "/" + modelJson);
@@ -75,7 +69,6 @@ public class ModelIndexerTest extends SolrBaseTest{
 
     @Test(expected = IOException.class)
     public void indexModel_notFoundModel_shouldThrowException() throws IOException, SolrServerException {
-        String sampleModelsDirPath = getResourcePath();
         String modelJson = "notFound.json";
 
         modelIndexerToTest.indexModel(sampleModelsDirPath + "/" + modelJson);
@@ -83,7 +76,6 @@ public class ModelIndexerTest extends SolrBaseTest{
 
     @Test(expected = IOException.class)
     public void indexModel_nullModel_shouldThrowException() throws IOException, SolrServerException {
-        String sampleModelsDirPath = getResourcePath();
         String modelJson = null;
 
         modelIndexerToTest.indexModel(sampleModelsDirPath + "/" + modelJson);

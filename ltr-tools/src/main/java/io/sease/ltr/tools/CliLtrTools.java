@@ -18,23 +18,22 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 /**
- * @author Alessandro
- * @date 26/08/2016
+ * @author abenedetti
  */
 public class CliLtrTools {
     private static final Logger LOGGER = LoggerFactory.getLogger(CliLtrTools.class);
 
-    public static final String SOLR_URL = "solrURL";
-    public static final String TOOL = "tool";
-    public static final String TRAINING_SET = "trainingSet";
-    public static final String FEATURES = "features";
-    public static final String CATEGORICAL_FEATURES = "categoricalFeatures";
-    public static final String MODEL = "model";
-    public static final String TRAINING_SET_INDEXER = "trainingSetIndexer";
-    public static final String MODEL_INDEXER = "modelIndexer";
-    public static final String TOP_SCORING_LEAVES_VIEWER = "topScoringLeavesViewer";
-    public static final String TOP_LEAVES = "topK";
-    public static final String HELP = "help";
+    private static final String SOLR_URL = "solrURL";
+    private static final String TOOL = "tool";
+    private static final String TRAINING_SET = "trainingSet";
+    private static final String FEATURES = "features";
+    private static final String CATEGORICAL_FEATURES = "categoricalFeatures";
+    private static final String MODEL = "model";
+    private static final String TRAINING_SET_INDEXER = "trainingSetIndexer";
+    private static final String MODEL_INDEXER = "modelIndexer";
+    private static final String TOP_SCORING_LEAVES_VIEWER = "topScoringLeavesViewer";
+    private static final String TOP_LEAVES = "topK";
+    private static final String HELP = "help";
 
     public static void main(String args[]) {
         Options options = initOptions();

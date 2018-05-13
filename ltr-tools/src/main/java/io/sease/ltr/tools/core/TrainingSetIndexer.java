@@ -26,8 +26,7 @@ import java.util.stream.Stream;
 import static io.sease.ltr.tools.config.SolrFields.TrainingSet.RELEVANCY;
 
 /**
- * @author Alessandro
- * @date 28/08/2016
+ * @author abenedetti
  */
 public class TrainingSetIndexer {
     private static final Logger LOGGER = LoggerFactory.getLogger(TrainingSetIndexer.class);

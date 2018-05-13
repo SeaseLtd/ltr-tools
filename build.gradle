@@ -18,11 +18,7 @@ subprojects {
 
         project.ext.builtAt = (int) (new Date().getTime() / 1000)
 
-        if (project.hasProperty('releaseVersion')) {
-            project.version = project.releaseVersion
-        } else {
-            project.version = '1.0' + project.ext.branch
-        }
+        project.version = "6.2.0"
     }
 }
 /* This delegates the responsability of evaluating a task to the children .

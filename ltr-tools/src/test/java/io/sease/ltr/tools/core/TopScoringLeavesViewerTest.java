@@ -7,16 +7,13 @@ import java.io.IOException;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import static org.powermock.reflect.Whitebox.setInternalState;
-
 
 /**
- * @author Alessandro
- * @date 28/08/2016
+ * @author abenedetti
  */
 public class TopScoringLeavesViewerTest {
 
-    public static final String SAMPLE_MODELS = "models";
+    private static final String SAMPLE_MODELS = "models";
 
     private TopScoringLeavesViewer viewerToTest;
 
