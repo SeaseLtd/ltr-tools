@@ -2,7 +2,7 @@
 <config>
     <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-dataimporthandler-.*\.jar"/>
 
-    <luceneMatchVersion>6.0.0</luceneMatchVersion>
+    <luceneMatchVersion>6.2.0</luceneMatchVersion>
     <dataDir>${solr.data.dir:}</dataDir>
     <directoryFactory name="DirectoryFactory"
                       class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}">
